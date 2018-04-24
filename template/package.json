@@ -23,10 +23,20 @@
     "lint": "eslint --ext .js,.vue src{{#unit}} test/unit{{/unit}}{{#e2e}} test/e2e/specs{{/e2e}}",
     {{/lint}}
     "build": "node build/build.js"
+    
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "vue": "^2.5.2"{{#router}},
-    "vue-router": "^3.0.1"{{/router}}
+    "vue-router": "^3.0.1"{{/router}}{{#vuex}},
+    "vuex": "^2.1.1"{{/vuex}}{{#if_eq frameList "element-ui"}},
+    "element-ui": "^2.3.6" {{/if_eq}}{{#if_eq frameList "vux"}},
+    "vux": "^2.2.0",
+    "fa-reset": "^1.0.0",
+    "fastclick": "^1.0.6",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "better-scroll": "^1.10.0"{{/if_eq}}
   },
   "devDependencies": {
     {{#lint}}
@@ -41,6 +51,14 @@
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.2.0",
+    {{/if_eq}}
+    {{#if_eq frameList "element-ui"}}
+    "babel-plugin-component": "^1.1.0",
+    {{/if_eq}}
+    {{#if_eq frameList "vux"}}
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "vux-loader": "^1.0.56",
     {{/if_eq}}
     {{#if_eq lintConfig "airbnb"}}
     "eslint-config-airbnb-base": "^11.3.0",
