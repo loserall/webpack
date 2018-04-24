@@ -8,14 +8,15 @@
     }],
     "stage-2"
   ],
-  "plugins": ["transform-vue-jsx", "transform-runtime" {{#if_eq frameList "element-ui"}},[
-    "component",
-    {
-      "libraryName": "element-ui",
-      "styleLibraryName": "theme-chalk"
-    }]
-    {{/if_eq}}}
-  ]{{#if_or unit e2e}},
+  "plugins": ["transform-vue-jsx", 
+              "transform-runtime" {{#if_eq frameList "element-ui"}},[
+              "component",
+              {
+                "libraryName": "element-ui",
+                "styleLibraryName": "theme-chalk"
+              }]{{/if_eq}}}
+              
+            ]{{#if_or unit e2e}},
   "env": {
     "test": {
       "presets": ["env", "stage-2"]{{#if_eq runner "karma"}},
