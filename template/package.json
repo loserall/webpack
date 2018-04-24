@@ -52,6 +52,13 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.2.0",
     {{/if_eq}}
+    {{#if_eq lintConfig "airbnb"}}
+    "eslint-config-airbnb-base": "^11.3.0",
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "eslint-plugin-import": "^2.7.0",
+    {{/if_eq}}
+    {{/lint}}
+    {{#frame}}
     {{#if_eq frameList "element-ui"}}
     "babel-plugin-component": "^1.1.0",
     {{/if_eq}}
@@ -60,12 +67,7 @@
     "less-loader": "^2.2.3",
     "vux-loader": "^1.0.56",
     {{/if_eq}}
-    {{#if_eq lintConfig "airbnb"}}
-    "eslint-config-airbnb-base": "^11.3.0",
-    "eslint-import-resolver-webpack": "^0.8.3",
-    "eslint-plugin-import": "^2.7.0",
-    {{/if_eq}}
-    {{/lint}}
+    {{/frame}}
     {{#if_eq runner "jest"}}
     "babel-jest": "^21.0.2",
     "babel-plugin-dynamic-import-node": "^1.2.0",
