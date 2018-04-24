@@ -14,7 +14,7 @@
               {
                 "libraryName": "element-ui",
                 "styleLibraryName": "theme-chalk"
-              }]{{/if_eq}}}
+              }]{{/if_eq}}
               
             ]{{#if_or unit e2e}},
   "env": {
