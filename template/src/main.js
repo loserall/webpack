@@ -23,6 +23,8 @@ Vue.use(LoadingPlugin);
 //  通用样式
 import "vux/src/styles/1px.less";
 import "vux/src/styles/close.less";
+//  通用样式  修复vux与rem适配冲突及移动端适配样式问题
+import 'common/fix-vux-style-inPhone.styl'
 FastClick.attach(document.body);
 {{/if_eq}}
 

@@ -1,0 +1,53 @@
+// 对于沉浸式状态栏 使标题下移20px
+//.vux-header
+//  padding-top 20px !important
+//  .vux-header-right
+//    padding-top 20px !important
+//  .vux-header-left
+//    padding-top 20px !important
+
+// 设置header为fixed定位
+.vux-header
+  width 100% !important
+  box-sizing border-box !important
+  z-index 500 !important
+  position fixed !important
+  .vux-header-title
+    font-size 18px !important
+    font-weight 300 !important
+    span
+      font-weight 300 !important
+  .vux-header-right
+    font-weight 300 !important
+    span
+      font-weight 300 !important
+// 修改toast框样式
+.weui-toast
+  min-height 0.5em !important
+  min-width 2.5em !important
+  width 35% !important
+  max-width 100% !important
+
+//  修改对话框样式
+.weui-dialog
+  font-size 16px
+
+// 设置tabbar为fixed定位
+.weui-tabbar
+  position fixed !important
+
+//  search组件样式
+.weui-search-bar__label
+  display flex
+  justify-content center
+  align-items center
+
+.text-ellipsis
+  overflow hidden
+  white-space nowrap
+  text-overflow ellipsis
+
+// 调整group和cell字体大小
+.group-center-fs
+  .weui-cells
+    font-size 14px !important

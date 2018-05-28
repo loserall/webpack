@@ -29,7 +29,7 @@
     "axios": "^0.18.0",
     "vue": "^2.5.2"{{#router}},
     "vue-router": "^3.0.1"{{/router}}{{#vuex}},
-    "vuex": "^2.1.1"{{/vuex}}{{#if_eq frameList "element-ui"}},
+    "vuex": "^2.9.0"{{/vuex}}{{#if_eq frameList "element-ui"}},
     "element-ui": "^2.3.6" {{/if_eq}}{{#if_eq frameList "vux"}},
     "vux": "^2.2.0",
     "fa-reset": "^1.0.0",

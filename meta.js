@@ -1,21 +1,17 @@
 const path = require("path");
 const fs = require("fs");
 
-const {
-    sortDependencies,
-    installDependencies,
-    runLintFix,
-    printMessage
-} = require("./utils");
+const {sortDependencies, installDependencies, runLintFix, printMessage} = require("./utils");
 const pkg = require("./package.json");
 
 const templateVersion = pkg.version;
 
-const { addTestAnswers } = require("./scenarios");
+const {addTestAnswers} = require("./scenarios");
 
 module.exports = {
     metalsmith: {
-        // When running tests for the template, this adds answers for the selected scenario
+        // When running tests for the template, this adds answers for the selected
+        // scenario
         before: addTestAnswers
     },
     helpers: {
@@ -59,10 +55,9 @@ module.exports = {
                     name: "Runtime + Compiler: recommended for most users",
                     value: "standalone",
                     short: "standalone"
-                },
-                {
-                    name:
-                        "Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTML) are ONLY allowed in .vue files - render functions are required elsewhere",
+                }, {
+                    name: "Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTM" +
+                            "L) are ONLY allowed in .vue files - render functions are required elsewhere",
                     value: "runtime",
                     short: "runtime"
                 }
@@ -93,13 +88,11 @@ module.exports = {
                     name: "element-ui",
                     value: "element-ui",
                     short: "element-ui"
-                },
-                {
+                }, {
                     name: "vux",
                     value: "vux",
                     short: "vux"
-                },
-                {
+                }, {
                     name: "none (configure it yourself)",
                     value: "none",
                     short: "none"
@@ -121,13 +114,11 @@ module.exports = {
                     name: "Standard (https://github.com/standard/standard)",
                     value: "standard",
                     short: "Standard"
-                },
-                {
+                }, {
                     name: "Airbnb (https://github.com/airbnb/javascript)",
                     value: "airbnb",
                     short: "Airbnb"
-                },
-                {
+                }, {
                     name: "none (configure it yourself)",
                     value: "none",
                     short: "none"
@@ -148,13 +139,11 @@ module.exports = {
                     name: "Jest",
                     value: "jest",
                     short: "jest"
-                },
-                {
+                }, {
                     name: "Karma and Mocha",
                     value: "karma",
                     short: "karma"
-                },
-                {
+                }, {
                     name: "none (configure it yourself)",
                     value: "noTest",
                     short: "noTest"
@@ -169,20 +158,18 @@ module.exports = {
         autoInstall: {
             when: "isNotTest",
             type: "list",
-            message:
-                "Should we run `npm install` for you after the project has been created? (recommended)",
+            message: "Should we run `npm install` for you after the project has been created? (recomme" +
+                    "nded)",
             choices: [
                 {
                     name: "Yes, use NPM",
                     value: "npm",
                     short: "npm"
-                },
-                {
+                }, {
                     name: "Yes, use Yarn",
                     value: "yarn",
                     short: "yarn"
-                },
-                {
+                }, {
                     name: "No, I will handle that myself",
                     value: false,
                     short: "no"
@@ -203,29 +190,26 @@ module.exports = {
         "test/unit/setup.js": "unit && runner === 'jest'",
         "test/e2e/**/*": "e2e",
         "src/router/**/*": "router",
+        "src/common/fix-vux-style-inPhone.styl": "frame && frameList === 'vux'",
         "src/store/**/*": "vuex"
     },
-    complete: function(data, { chalk }) {
+    complete: function (data, {chalk}) {
         const green = chalk.green;
 
         sortDependencies(data, green);
 
-        const cwd = path.join(
-            process.cwd(),
-            data.inPlace ? "" : data.destDirName
-        );
+        const cwd = path.join(process.cwd(), data.inPlace
+            ? ""
+            : data.destDirName);
 
         if (data.autoInstall) {
-            installDependencies(cwd, data.autoInstall, green)
-                .then(() => {
-                    return runLintFix(cwd, data, green);
-                })
-                .then(() => {
-                    printMessage(data, green);
-                })
-                .catch(e => {
-                    console.log(chalk.red("Error:"), e);
-                });
+            installDependencies(cwd, data.autoInstall, green).then(() => {
+                return runLintFix(cwd, data, green);
+            }).then(() => {
+                printMessage(data, green);
+            }).catch(e => {
+                console.log(chalk.red("Error:"), e);
+            });
         } else {
             printMessage(data, chalk);
         }
